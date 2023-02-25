@@ -10,7 +10,11 @@ const displayPhone = (phones) =>{
     // Thts's means when You will Search new Data,Then Remove Old Data.
 
     // display show only 20 phoens
-    phones= phones.slice(0,50)
+    if(phones.length>10){
+        phones = phones.slice(0,10)
+        const showALL = document.getElementById('show-all');
+        showALL.classList.remove('d-none')
+    }
 
     // display nai Interface
 
