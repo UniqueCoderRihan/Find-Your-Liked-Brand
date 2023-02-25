@@ -1,5 +1,5 @@
 const loadPhone =async (inputValue)=>{
-    const url = `https://openapi.programming-hero.com/api/phones?search=i${inputValue}`
+    const url = `https://openapi.programming-hero.com/api/phones?search=${inputValue}`
     const res = await fetch(url)
     const data = await res.json()
     displayPhone(data.data);
@@ -11,6 +11,18 @@ const displayPhone = (phones) =>{
 
     // display show only 20 phoens
     phones= phones.slice(0,20)
+
+    // display nai Interface
+
+    const notFound = document.getElementById('not-found');
+    if(phones.length ===0){
+        notFound.classList.remove('d-none')
+    }
+    else{
+        notFound.classList.add('d-none')
+    }
+
+    // display show 
     for(const phone of phones){
         // console.log(phone);
         const newDiv = document.createElement('div');
@@ -31,11 +43,12 @@ const displayPhone = (phones) =>{
 }
 
 document.getElementById('search-btn').addEventListener('click', function(){
-    const inputValueElement = document.getElementById('search-btn');
+    const inputValueElement = document.getElementById('search-filed');
     const inputValue = inputValueElement.value;
+    inputValueElement.value = '';
     // console.log(inputValue);
     loadPhone(inputValue);
 
 })
 
-loadPhone()
+loadPhone('iphone');
