@@ -5,9 +5,11 @@ const loadPhone =async (inputValue)=>{
     displayPhone(data.data);
 }
 const displayPhone = (phones) =>{
+    const phoneContainer = document.getElementById('card-container');
+    phoneContainer.innerText = ''
+    // Thts's means when You will Search new Data,Then Remove Old Data.
     for(const phone of phones){
         // console.log(phone);
-        const phoneContainer = document.getElementById('card-container');
         const newDiv = document.createElement('div');
         newDiv.classList.add('col');
         newDiv.innerHTML = `
