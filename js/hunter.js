@@ -6,15 +6,16 @@ const loadPhone =async ()=>{
 }
 const displayPhone = (phones) =>{
     for(const phone of phones){
-        console.log(phone.image);
+        console.log(phone);
         const phoneContainer = document.getElementById('card-container');
         const newDiv = document.createElement('div');
         newDiv.classList.add('col');
         newDiv.innerHTML = `
-        <div class="card">
+        <div class="card p-2">
             <img src="${phone.image}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h4 class="card-title">Brand: ${phone.phone_name}</h4>
+                <h5 class="card-title">Brand: ${phone.brand}</h5>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
         </div>
