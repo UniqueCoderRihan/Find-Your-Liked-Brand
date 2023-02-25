@@ -10,7 +10,7 @@ const displayPhone = (phones) =>{
     // Thts's means when You will Search new Data,Then Remove Old Data.
 
     // display show only 20 phoens
-    phones= phones.slice(0,20)
+    phones= phones.slice(0,50)
 
     // display nai Interface
 
@@ -36,13 +36,17 @@ const displayPhone = (phones) =>{
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
         </div>
-        `
+        `;
+        
         phoneContainer.appendChild(newDiv);
     }
-    
 }
+// stop laoder
+loadPhone(false)
 
 document.getElementById('search-btn').addEventListener('click', function(){
+    // loader start
+    isloading(true);
     const inputValueElement = document.getElementById('search-filed');
     const inputValue = inputValueElement.value;
     inputValueElement.value = '';
@@ -51,4 +55,14 @@ document.getElementById('search-btn').addEventListener('click', function(){
 
 })
 
-loadPhone('iphone');
+const isloading = (loading)=>{
+    const loaderSection = document.getElementById('loader');
+    if(loading===true){
+        loaderSection.classList.remove('d-none');
+    }
+    else{
+        loaderSection.classList.add('d-none');
+    }
+}
+
+loadPhone();
