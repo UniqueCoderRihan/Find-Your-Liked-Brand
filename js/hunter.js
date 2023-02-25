@@ -8,6 +8,9 @@ const displayPhone = (phones) =>{
     const phoneContainer = document.getElementById('card-container');
     phoneContainer.innerText = ''
     // Thts's means when You will Search new Data,Then Remove Old Data.
+
+    // display show only 20 phoens
+    phones= phones.slice(0,20)
     for(const phone of phones){
         // console.log(phone);
         const newDiv = document.createElement('div');
