@@ -1,19 +1,22 @@
-const loadPhone =async (inputValue)=>{
+const loadPhone =async (inputValue,dataLimit)=>{
     const url = `https://openapi.programming-hero.com/api/phones?search=${inputValue}`
     const res = await fetch(url)
     const data = await res.json()
-    displayPhone(data.data);
+    displayPhone(data.data,dataLimit);
 }
-const displayPhone = (phones) =>{
+const displayPhone = (phones,dataLimit) =>{
     const phoneContainer = document.getElementById('card-container');
     phoneContainer.innerText = ''
     // Thts's means when You will Search new Data,Then Remove Old Data.
 
-    // display show only 20 phoens
-    if(phones.length>10){
+    // display show only 10 phoens
+    const showALL = document.getElementById('show-all');
+    if(dataLimit && phones.length > 10){
         phones = phones.slice(0,10)
-        const showALL = document.getElementById('show-all');
         showALL.classList.remove('d-none')
+    }
+    else{
+        showALL.classList.add('d-none')
     }
 
     // display nai Interface
@@ -48,15 +51,16 @@ const displayPhone = (phones) =>{
 // stop laoder
 loadPhone(false)
 
-document.getElementById('search-btn').addEventListener('click', function(){
-    // loader start
+const processerSearch = (dataLimit) =>{
     isloading(true);
     const inputValueElement = document.getElementById('search-filed');
     const inputValue = inputValueElement.value;
-    inputValueElement.value = '';
-    // console.log(inputValue);
-    loadPhone(inputValue);
+    loadPhone(inputValue,dataLimit);
+}
 
+document.getElementById('search-btn').addEventListener('click', function(){
+    // loader start
+    processerSearch(10)
 })
 
 const isloading = (loading)=>{
@@ -69,4 +73,8 @@ const isloading = (loading)=>{
     }
 }
 
+// show all btn
+document.getElementById('show-all-btn').addEventListener('click', function(){
+    processerSearch();
+})
 loadPhone();
