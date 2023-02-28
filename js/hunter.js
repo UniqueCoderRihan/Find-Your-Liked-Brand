@@ -47,15 +47,16 @@ const displayPhone = (phones,dataLimit) =>{
         
         phoneContainer.appendChild(newDiv);
     }
+    // stop laoder
+isloading(false)
 }
-// stop laoder
-loadPhone(false)
+
 
 const processerSearch = (dataLimit) =>{
     isloading(true);
     const inputValueElement = document.getElementById('search-filed');
     const inputValue = inputValueElement.value;
-    inputValueElement.value = ''
+    // inputValueElement.value = ''
     loadPhone(inputValue,dataLimit);
 }
 
@@ -75,7 +76,7 @@ const isloading = (loading)=>{
 }
 
 // show all btn
-document.getElementById('show-all-btn').addEventListener('click', function(){
+document.getElementById('btn-show-all').addEventListener('click', function(){
     processerSearch();
 })
-loadPhone();
+// loadPhone('apple');
