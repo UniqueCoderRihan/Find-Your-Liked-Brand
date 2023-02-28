@@ -6,3 +6,5 @@ class bios{
         this.bio = bio
     }
 }
+const parson = new bios('raiuhan','student','amar age hocce ponero');
+console.log(parson.name);
