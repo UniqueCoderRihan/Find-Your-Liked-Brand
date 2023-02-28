@@ -55,6 +55,7 @@ const processerSearch = (dataLimit) =>{
     isloading(true);
     const inputValueElement = document.getElementById('search-filed');
     const inputValue = inputValueElement.value;
+    inputValueElement.value = ''
     loadPhone(inputValue,dataLimit);
 }
 
